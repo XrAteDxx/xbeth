@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>My Shop Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="persian-clock.css">
+    <!-- Persian font (for clock/date, optional but looks good) -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn-font@v35.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <button class="burger" id="burger"><i class="fas fa-bars"></i></button>
+    <!-- Sidebar will be loaded here -->
+    <div id="sidebar-placeholder"></div>
+    <div class="main-content" id="main-content">
+        <div class="dashboard-head">
+            <h1>Dashboard</h1>
+            <!-- Persian clock/date will be loaded here -->
+            <div id="persian-clock-placeholder"></div>
+        </div>
+        <div class="dashboard-body">
+            <div class="dashboard-cards">
+                <a href="customers.html" class="dashboard-card info">
+                    <div class="icon-circle"><i class="fas fa-users"></i></div>
+                    <div class="card-content">
+                        <div class="card-title">Customers</div>
+                        <div class="card-value" id="dashboard-customers-count">0</div>
+                        <div class="card-desc">Active this month</div>
+                    </div>
+                </a>
+                <a href="products.html" class="dashboard-card success">
+                    <div class="icon-circle"><i class="fas fa-boxes"></i></div>
+                    <div class="card-content">
+                        <div class="card-title">Products</div>
+                        <div class="card-value" id="dashboard-products-count">0</div>
+                        <div class="card-desc">In stock</div>
+                    </div>
+                </a>
+                <a href="invoice.html" class="dashboard-card warning">
+                    <div class="icon-circle"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <div class="card-content">
+                        <div class="card-title">Invoices</div>
+                        <div class="card-value" id="dashboard-invoices-amount">$0</div>
+                        <div class="card-desc">Billed this month</div>
+                    </div>
+                </a>
+                <a href="inventory.html" class="dashboard-card purple">
+                    <div class="icon-circle"><i class="fas fa-warehouse"></i></div>
+                    <div class="card-content">
+                        <div class="card-title">Inventory</div>
+                        <div class="card-value" id="dashboard-inventory-count">0</div>
+                        <div class="card-desc">Total items</div>
+                    </div>
+                </a>
+                <a href="suppliers.html" class="dashboard-card gray">
+                    <div class="icon-circle"><i class="fas fa-truck"></i></div>
+                    <div class="card-content">
+                        <div class="card-title">Suppliers</div>
+                        <div class="card-value" id="dashboard-suppliers-count">0</div>
+                        <div class="card-desc">Active vendors</div>
+                    </div>
+                </a>
+                <a href="finance.html" class="dashboard-card success">
+                    <div class="icon-circle"><i class="fas fa-coins"></i></div>
+                    <div class="card-content">
+                        <div class="card-title">Finance</div>
+                        <div class="card-value" id="dashboard-finance-net">$0</div>
+                        <div class="card-desc">Net revenue</div>
+                    </div>
+                </a>
+                <a href="invoice-log.html" class="dashboard-card danger">
+                    <div class="icon-circle"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="card-content">
+                        <div class="card-title">Invoice Log</div>
+                        <div class="card-value" id="dashboard-invoice-log-overdue">0</div>
+                        <div class="card-desc">Invoices overdue</div>
+                    </div>
+                </a>
+                <a href="stats-a.html" class="dashboard-card future">
+                    <div class="icon-circle"><i class="fas fa-chart-bar"></i></div>
+                    <div class="card-content">
+                        <div class="card-title">Stats A</div>
+                        <div class="card-value"><i class="fas fa-medal"></i></div>
+                        <div class="card-desc">
+                            <strong>Most sold items</strong>: Item X, Item Y<br>
+                            <strong>Top customers</strong>: Alice, Bob<br>
+                            <em>...more coming soon</em>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="sidebar.js"></script>
+    <script src="java.js"></script>
+    <script src="persian-clock.js"></script>
+    <script>
+      // Load sidebar.html and initialize sidebar logic after load
+      fetch('sidebar.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('sidebar-placeholder').innerHTML = html;
+          sidebarInit();
+        });
+
+      // Load persian-clock.html and initialize clock logic after load
+      fetch('persian-clock.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('persian-clock-placeholder').innerHTML = html;
+          if (typeof initPersianClock === "function") initPersianClock();
+        });
+    </script>
+</body>
+</html>
