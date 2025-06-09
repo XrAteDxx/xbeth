@@ -1,0 +1,271 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: #f8f7fa;
+    color: #22223b;
+    min-height: 100vh;
+}
+
+/* ======= MAIN CONTENT ======= */
+.main-content {
+    margin-left: 250px;
+    padding: 40px 32px 32px 32px;
+    min-height: 100vh;
+    transition: margin-left 0.3s;
+    position: relative;
+}
+.sidebar.collapsed ~ .main-content { margin-left: 64px; }
+
+@media (max-width: 700px) {
+    .main-content { padding: 26px 3vw 16px 3vw; }
+}
+
+/* ======= DASHBOARD HEAD & BODY LAYOUT ======= */
+.dashboard-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 38px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.dashboard-head h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #22223b;
+    margin: 0;
+    line-height: 1.25;
+}
+@media (max-width: 700px) {
+    .dashboard-head {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 22px;
+        gap: 6px;
+    }
+    .dashboard-head h1 {
+        margin-bottom: 10px;
+        font-size: 1.25rem;
+    }
+}
+.dashboard-body {
+    width: 100%;
+}
+
+/* ======= DASHBOARD CARDS (GRID) - ALL CARDS SAME SIZE ======= */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 0;
+    margin-bottom: 32px;
+    align-items: stretch;
+}
+@media (max-width: 1200px) {
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 700px) {
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+.dashboard-card {
+    background: #fff;
+    border-radius: 1.2rem;
+    box-shadow: 0 2px 16px 0 rgba(30,60,90,0.08);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 24px 30px;
+    min-height: 185px;   /* Increased for content fit */
+    max-height: 185px;   /* Fixed height for all cards */
+    position: relative;
+    transition: box-shadow 0.18s, transform 0.15s, background 0.15s;
+    border: none;
+    overflow: hidden;    /* Hide overflowing content */
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+.dashboard-card:hover, .dashboard-card:focus {
+    box-shadow: 0 6px 32px 0 rgba(30,60,90,0.15);
+    transform: translateY(-3px) scale(1.03);
+    background: #f8fafc;
+}
+.dashboard-card .icon-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #fff;
+    margin-right: 22px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.dashboard-card .card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: flex-start;
+}
+.dashboard-card .card-title {
+    font-size: 1.07rem;
+    font-weight: 600;
+    margin-bottom: 0.2em;
+    color: #555;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+.dashboard-card .card-value {
+    font-size: 2.3rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #21223b;
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+.dashboard-card .card-desc {
+    font-size: 0.98rem;
+    color: #8d99ae;
+    margin-top: 2px;
+    font-weight: 500;
+    height: 2.5em;             /* Fixed height for all card descriptions */
+    overflow: hidden;          /* Hide overflow */
+    text-overflow: ellipsis;   /* Add ... if text is too long */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;     /* Show up to 2 lines */
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+}
+
+/* === COLOR THEMES === */
+.dashboard-card.info .icon-circle {
+    background: linear-gradient(135deg, #38bdf8 60%, #0ea5e9 100%);
+    box-shadow: 0 3px 18px #38bdf888;
+}
+.dashboard-card.success .icon-circle {
+    background: linear-gradient(135deg, #34d399 60%, #059669 100%);
+    box-shadow: 0 3px 18px #34d39988;
+}
+.dashboard-card.warning .icon-circle {
+    background: linear-gradient(135deg, #fbbf24 60%, #f59e42 100%);
+    box-shadow: 0 3px 18px #fbbf2488;
+}
+.dashboard-card.danger .icon-circle {
+    background: linear-gradient(135deg, #f87171 60%, #dc2626 100%);
+    box-shadow: 0 3px 18px #f8717188;
+}
+.dashboard-card.purple .icon-circle {
+    background: linear-gradient(135deg, #a78bfa 60%, #6d28d9 100%);
+    box-shadow: 0 3px 18px #a78bfa88;
+}
+.dashboard-card.gray .icon-circle {
+    background: linear-gradient(135deg, #cbd5e1 60%, #64748b 100%);
+    box-shadow: 0 3px 18px #cbd5e188;
+}
+.dashboard-card.future .icon-circle {
+    background: linear-gradient(135deg, #818cf8 60%, #38bdf8 100%);
+    box-shadow: 0 3px 18px #818cf888;
+}
+
+/* Responsive tweaks for cards */
+@media (max-width: 800px) {
+    .dashboard-card {
+        padding: 18px 12px;
+        min-height: 135px;
+        max-height: 135px;
+    }
+    .dashboard-card .icon-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+        margin-right: 12px;
+    }
+    .dashboard-card .card-value {
+        font-size: 1.5rem;
+    }
+    .dashboard-card .card-title {
+        font-size: 0.9rem;
+    }
+    .dashboard-card .card-desc {
+        height: 2.5em;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+    }
+}
+
+/* ===== CLOCK & DATE (Persian) ===== */
+.persian-clock-card {
+    background: linear-gradient(135deg, #f8fafc 80%, #a5b4fc 100%);
+    box-shadow: 0 4px 24px rgba(80,80,160,0.07), 0 1.5px 7px 0 rgba(0,0,0,0.04);
+    border-radius: 1.4em;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 18px 28px 16px 28px;
+    font-family: 'Vazirmatn', 'IRANSans', 'Tahoma', Arial, sans-serif;
+    border: 1.5px solid #e0e7ef;
+    user-select: none;
+    transition: box-shadow 0.18s;
+    margin-left: 20px;
+}
+.persian-clock-card:hover {
+    box-shadow: 0 8px 32px 0 rgba(60,100,180,0.13), 0 3px 16px 0 rgba(0,0,0,0.09);
+}
+.persian-clock-time {
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: #3730a3;
+    letter-spacing: 0.07em;
+    line-height: 1.1;
+    direction: ltr;
+    display: flex;
+    align-items: baseline;
+    gap: 0.1em;
+}
+.persian-clock-seconds {
+    font-size: 1.2rem;
+    color: #818cf8;
+    margin-left: 0.18em;
+    font-weight: 600;
+}
+.persian-clock-date {
+    margin-top: 2px;
+    font-size: 1.09rem;
+    color: #64748b;
+    font-weight: 600;
+    text-align: right;
+    direction: rtl;
+    letter-spacing: 0.01em;
+}
+@media (max-width: 900px) {
+    .persian-clock-card {
+        padding: 12px 15px 11px 15px;
+        min-width: 135px;
+        margin-left: 0;
+    }
+    .persian-clock-time { font-size: 1.2rem; }
+    .persian-clock-seconds { font-size: 0.9rem; }
+    .persian-clock-date { font-size: 0.95rem; }
+}
+@media (max-width: 700px) {
+    .persian-clock-card {
+        margin-bottom: 8px;
+        margin-left: 0;
+    }
+}
+@media (max-width: 540px) {
+    .persian-clock-card {
+        position: static;
+        margin: 0 0 14px 0;
+        align-items: flex-start;
+    }
+}

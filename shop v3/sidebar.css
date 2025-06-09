@@ -1,0 +1,289 @@
+/* ===== Sidebar Modern Glassmorphism Style (Lively, Compact, Soft Pastel, 70% Height Centered) ===== */
+.sidebar {
+    position: fixed;
+    top: 15vh;
+    left: 0;
+    width: 220px;
+    height: 70vh;
+    background: linear-gradient(160deg, #dde8fb 0%, #f5eafe 100%);
+    background-blend-mode: overlay;
+    backdrop-filter: blur(24px) saturate(180%);
+    box-shadow: 8px 0 48px 0 rgba(32, 42, 58, 0.12), 1.5px 0 7px 0 rgba(0,0,0,0.06);
+    color: #22223b;
+    z-index: 1004;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.25s cubic-bezier(.4,2,.3,1), background 0.3s, top 0.3s, height 0.3s;
+    border-top-right-radius: 28px;
+    border-bottom-right-radius: 28px;
+    border-right: 2px solid rgba(183, 202, 255, 0.13);
+}
+
+.sidebar.collapsed {
+    width: 56px;
+    min-width: 56px;
+    align-items: center;
+}
+@media (max-width: 700px) {
+    .sidebar {
+        top: 0;
+        height: 100vh;
+        left: -225px;
+        border-radius: 0 20px 20px 0;
+        width: 200px;
+        min-width: 0;
+        transition: left 0.33s cubic-bezier(.4,2,.3,1), top 0.3s, height 0.3s;
+    }
+    .sidebar.active {
+        left: 0;
+    }
+}
+.sidebar-profile {
+    margin: 24px 0 24px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: padding 0.3s;
+}
+.sidebar.collapsed .sidebar-profile {
+    margin: 12px 0 8px 0;
+}
+.sidebar-profile .avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #b7caff33;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.10);
+    margin-bottom: 4px;
+    transition: width 0.2s, height 0.2s;
+}
+.sidebar.collapsed .sidebar-profile .avatar {
+    width: 28px;
+    height: 28px;
+}
+.sidebar-profile .username {
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: #22223b;
+    letter-spacing: 0.01em;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    opacity: 0.96;
+    text-shadow: 0 1px 5px #dbeafe;
+    transition: opacity 0.2s, font-size 0.2s;
+}
+.sidebar.collapsed .sidebar-profile .username {
+    opacity: 0;
+    font-size: 0;
+}
+
+/* Shop title/logo */
+.shop-title {
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #a58be0;
+    text-align: center;
+    margin-bottom: 12px;
+    letter-spacing: 0.06em;
+    opacity: 0.93;
+    text-shadow: 0 1px 8px #ede9fe80;
+    transition: opacity 0.2s, font-size 0.2s;
+}
+.sidebar.collapsed .shop-title {
+    opacity: 0;
+    font-size: 0;
+}
+
+/* Sidebar menu */
+.sidebar-menu {
+    list-style: none;
+    padding: 0 0 0 0;
+    margin: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.sidebar-menu li {
+    width: 100%;
+}
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 8px 18px 8px 12px;
+    color: #444;
+    font-size: 0.99rem;
+    font-weight: 550;
+    border-radius: 11px;
+    text-decoration: none;
+    margin: 0;
+    gap: 10px;
+    transition: background 0.17s, color 0.17s, box-shadow 0.18s, padding 0.3s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 rgba(140, 170, 255, 0);
+    letter-spacing: 0.01em;
+    backdrop-filter: blur(1.5px);
+}
+.sidebar-menu a .item-text {
+    transition: opacity 0.22s, margin-left 0.3s;
+    opacity: 1;
+    margin-left: 0;
+    font-size: 0.99rem;
+}
+.sidebar.collapsed .sidebar-menu a .item-text {
+    opacity: 0;
+    margin-left: -16px;
+    width: 0;
+    padding: 0;
+}
+
+.sidebar-menu a.active,
+.sidebar-menu a:hover,
+.sidebar-menu a:focus {
+    background: linear-gradient(90deg, #b4e0fb 60%, #e1cafe 100%);
+    color: #3b217b;
+    box-shadow: 0 4px 15px 0 #a5b4fc3a, 0 2px 8px 0 #f5e0fa18;
+    text-shadow: 0 1px 6px #c7d2fe;
+}
+
+.sidebar.collapsed .sidebar-menu a {
+    justify-content: center;
+    padding: 10px 0 10px 0;
+}
+.sidebar.collapsed .sidebar-menu a.active,
+.sidebar.collapsed .sidebar-menu a:hover,
+.sidebar.collapsed .sidebar-menu a:focus {
+    background: linear-gradient(180deg, #b4e0fb 80%, #e1cafe 100%);
+}
+.sidebar-menu a i {
+    font-size: 1.08rem;
+    min-width: 26px;
+    min-height: 26px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* Default icon bg for fallback */
+    background: linear-gradient(135deg, #a5b4fc 60%, #fbcfe8 100%);
+    color: #fff;
+    box-shadow: 0 1px 7px 0 #6c70ff23;
+    transition: color 0.22s, font-size 0.19s, background 0.23s;
+}
+
+.sidebar-menu a.active i,
+.sidebar-menu a:hover i,
+.sidebar-menu a:focus i {
+    color: #fff;
+    background: linear-gradient(135deg, #a58be0 40%, #b4e0fb 100%);
+    box-shadow: 0 1.5px 8px 0 #ede9fe34;
+}
+
+/* Individual icon color backgrounds for vibrance (still lively, but a bit softer) */
+.sidebar-menu a[href*="dashboard"] i { background: linear-gradient(135deg, #bae6fd 60%, #a7f3d0 100%); color: #2d3748; }
+.sidebar-menu a[href*="inventory"] i { background: linear-gradient(135deg, #ddd6fe 60%, #a5b4fc 100%); color: #5b21b6; }
+.sidebar-menu a[href*="products"] i { background: linear-gradient(135deg, #fef9c3 60%, #fde68a 100%); color: #a16207; }
+.sidebar-menu a[href*="invoice"] i { background: linear-gradient(135deg, #bbf7d0 60%, #fef9c3 100%); color: #047857; }
+.sidebar-menu a[href*="customers"] i { background: linear-gradient(135deg, #a7f3d0 60%, #bae6fd 100%); color: #1d4ed8; }
+.sidebar-menu a[href*="suppliers"] i { background: linear-gradient(135deg, #fecaca 60%, #fbcfe8 100%); color: #be185d; }
+.sidebar-menu a[href*="finance"] i { background: linear-gradient(135deg, #fbcfe8 60%, #fef9c3 100%); color: #be185d; }
+.sidebar-menu a[href*="stats-a"] i { background: linear-gradient(135deg, #ddd6fe 60%, #fbcfe8 100%); color: #6d28d9; }
+.sidebar-menu a[href*="invoice-log"] i { background: linear-gradient(135deg, #fed7aa 60%, #fbcfe8 100%); color: #b91c1c; }
+
+.sidebar.collapsed .sidebar-menu a i {
+    font-size: 1.08rem;
+    min-width: 26px;
+    min-height: 26px;
+    width: 26px;
+    height: 26px;
+}
+
+/* Sidebar logout */
+.logout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 18px 8px 12px;
+    color: #b91c1c;
+    font-size: 0.98rem;
+    font-weight: 600;
+    border-radius: 11px;
+    text-decoration: none;
+    margin: 10px 0 14px 0;
+    gap: 10px;
+    background: none;
+    transition: background 0.16s, color 0.18s;
+}
+.logout:hover, .logout:focus {
+    background: linear-gradient(90deg, #fbcfe8 70%, #fecaca 100%);
+    color: #fff;
+    box-shadow: 0 1.5px 10px #fbcfe843;
+}
+.logout i {
+    font-size: 1rem;
+    background: linear-gradient(135deg, #fecaca 60%, #fbcfe8 100%);
+    border-radius: 50%;
+    padding: 7px;
+    color: #b91c1c;
+    transition: color 0.17s, background 0.18s;
+}
+.logout:hover i, .logout:focus i {
+    color: #fff;
+    background: linear-gradient(135deg, #fda4af 0%, #fbcfe8 100%);
+}
+.sidebar.collapsed .logout {
+    justify-content: center;
+    padding: 10px 0 10px 0;
+}
+.sidebar.collapsed .logout .item-text {
+    opacity: 0;
+    margin-left: -18px;
+    width: 0;
+    padding: 0;
+}
+
+/* Burger button */
+.burger {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    width: 34px;
+    height: 34px;
+    z-index: 2002;
+    background: linear-gradient(135deg, #b4e0fb 60%, #e1cafe 100%);
+    border: none;
+    border-radius: 9px;
+    color: #3b217b;
+    font-size: 1.14rem;
+    box-shadow: 0 2px 7px #a5b4fc70;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+.burger:hover, .burger:focus {
+    background: linear-gradient(135deg, #e1cafe 60%, #b4e0fb 100%);
+}
+
+@media (max-width: 700px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        left: -225px;
+        border-radius: 0 20px 20px 0;
+        width: 200px;
+        min-width: 0;
+        transition: left 0.33s cubic-bezier(.4,2,.3,1), top 0.3s, height 0.3s;
+    }
+    .sidebar.active {
+        left: 0;
+    }
+}
