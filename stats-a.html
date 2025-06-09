@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stats A - My Shop Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="stats-a.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <button class="burger" id="burger"><i class="fas fa-bars"></i></button>
+    <!-- Sidebar will be loaded here -->
+    <div id="sidebar-placeholder"></div>
+    <div class="main-content" id="main-content">
+        <h1>Stats A</h1>
+        <div class="stats-cards-container">
+            <div class="stats-card">
+                <div class="stats-icon"><i class="fas fa-shopping-cart"></i></div>
+                <div class="stats-info">
+                    <div class="stats-label">Total Sales</div>
+                    <div class="stats-value" id="totalSales">$12,400</div>
+                </div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-icon"><i class="fas fa-box"></i></div>
+                <div class="stats-info">
+                    <div class="stats-label">Inventory Items</div>
+                    <div class="stats-value" id="inventoryItems">1,350</div>
+                </div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-icon"><i class="fas fa-users"></i></div>
+                <div class="stats-info">
+                    <div class="stats-label">Customers</div>
+                    <div class="stats-value" id="customersCount">285</div>
+                </div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-icon"><i class="fas fa-coins"></i></div>
+                <div class="stats-info">
+                    <div class="stats-label">Revenue</div>
+                    <div class="stats-value" id="revenue">$48,000</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="sidebar.js"></script>
+    <script src="java.js"></script>
+    <script src="stats-a.js"></script>
+    <script>
+      // Load sidebar.html and initialize sidebar logic after load
+      fetch('sidebar.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('sidebar-placeholder').innerHTML = html;
+          sidebarInit();
+        });
+    </script>
+</body>
+</html>

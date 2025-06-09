@@ -1,0 +1,197 @@
+.invoice-section {
+    background: #fff;
+    border-radius: 1.2rem;
+    box-shadow: 0 2px 16px 0 rgba(30,60,90,0.08);
+    padding: 48px 36px 36px 36px;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.invoice-form .form-row {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 22px;
+}
+.invoice-form .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.invoice-form label {
+    font-size: 1.06rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 6px;
+}
+.invoice-form input,
+.invoice-form select {
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1.5px solid #e0e7ef;
+    font-size: 1.06rem;
+    outline: none;
+    transition: border 0.14s;
+}
+.invoice-form input:focus,
+.invoice-form select:focus {
+    border-color: #4f8bf9;
+    background: #f0f7ff;
+}
+.invoice-form input[readonly] {
+    background: #f5f6fa;
+    color: #888;
+    border: 1.5px solid #e2e8f0;
+    pointer-events: none;
+}
+
+.invoice-items-table-wrapper {
+    margin: 22px 0 18px 0;
+}
+
+.invoice-items-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: transparent;
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    table-layout: fixed;
+}
+
+.invoice-items-table thead th {
+    background: #f5f6fa;
+    color: #4f4f5a;
+    font-weight: 700;
+    border-bottom: 2px solid #e0e7ef;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 12px 8px;
+}
+
+.invoice-items-table th.name-col,
+.invoice-items-table td.name-col {
+    width: 26%;
+    min-width: 180px;
+    max-width: 400px;
+}
+
+.invoice-items-table th,
+.invoice-items-table td {
+    padding: 10px 8px;
+    text-align: left;
+    border-bottom: 1px solid #e7eaf6;
+    vertical-align: middle;
+}
+
+.invoice-items-table td input[type="text"], 
+.invoice-items-table td input[type="number"] {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 6px;
+    border: 1.2px solid #e2e8f0;
+    padding: 6px 7px;
+    font-size: 1rem;
+    margin: 0;
+}
+.invoice-items-table td input[readonly] {
+    background: #f5f6fa;
+    color: #888;
+    border: 1.2px solid #e2e8f0;
+    pointer-events: none;
+}
+
+.add-item-btn {
+    background: linear-gradient(90deg, #38bdf8 70%, #818cf8 100%);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-weight: 600;
+    font-size: 1.02rem;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: background 0.18s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    box-shadow: 0 2px 9px #38bdf83a;
+}
+.add-item-btn:hover {
+    background: linear-gradient(90deg, #818cf8 60%, #38bdf8 100%);
+}
+.remove-item-btn {
+    background: #fde8e8;
+    color: #ef4444;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.12rem;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: background 0.16s;
+}
+.remove-item-btn:hover {
+    background: #fca5a5;
+    color: #fff;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 18px;
+    margin-top: 20px;
+}
+.save-btn {
+    background: linear-gradient(90deg, #34d399 60%, #059669 100%);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 1.1rem;
+    padding: 12px 34px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.13s;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.save-btn:hover {
+    background: linear-gradient(90deg, #059669 80%, #34d399 100%);
+}
+
+/* Headings */
+.invoice-form h3 {
+    font-size: 1.22rem;
+    font-weight: 700;
+    color: #3b217b;
+    margin-bottom: 10px;
+    margin-top: 7px;
+}
+
+/* Expenses Section */
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .invoice-section {
+        max-width: 99vw;
+        padding: 22px 2vw 16px 2vw;
+    }
+    .invoice-items-table th.name-col,
+    .invoice-items-table td.name-col {
+        min-width: 140px;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 700px) {
+    .invoice-section {
+        padding: 10px 2vw 16px 2vw;
+    }
+    .invoice-form .form-row {
+        flex-direction: column;
+        gap: 7px;
+    }
+    .invoice-items-table th, .invoice-items-table td {
+        font-size: 0.98rem;
+        padding: 7px 5px;
+    }
+}

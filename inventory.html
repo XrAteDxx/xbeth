@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory | My Shop Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="persian-clock.css">
+    <link rel="stylesheet" href="inventory.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn-font@v35.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <button class="burger" id="burger"><i class="fas fa-bars"></i></button>
+    <div id="sidebar-placeholder"></div>
+    <div class="main-content" id="main-content">
+        <div class="dashboard-head">
+            <h1>Inventory</h1>
+            <div id="persian-clock-placeholder"></div>
+        </div>
+        <div class="inventory-section">
+            <div class="inventory-header">
+                <button class="add-inventory-btn" id="addInventoryBtn">
+                    <i class="fas fa-plus"></i> Add Product
+                </button>
+            </div>
+            <div class="inventory-table-wrapper">
+                <table class="inventory-table" id="inventoryTable">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows are rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Modal for add/edit inventory item -->
+        <div class="modal-overlay" id="inventoryModalOverlay" style="display:none;">
+            <div class="modal" id="inventoryModal">
+                <div class="modal-header">
+                    <h2 id="inventoryModalTitle">Add Product</h2>
+                    <button class="close-modal" id="closeInventoryModal">&times;</button>
+                </div>
+                <form id="inventoryForm">
+                    <div class="form-group">
+                        <label for="inventoryName">Product Name <span style="color:#e53e3e">*</span></label>
+                        <input type="text" id="inventoryName" name="inventoryName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inventoryQuantity">Quantity</label>
+                        <input type="number" id="inventoryQuantity" name="inventoryQuantity" min="0" step="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="inventoryDescription">Description</label>
+                        <input type="text" id="inventoryDescription" name="inventoryDescription">
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="save-btn"><i class="fas fa-save"></i> Save</button>
+                        <button type="button" class="cancel-btn" id="cancelInventoryModal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="sidebar.js"></script>
+    <script src="persian-clock.js"></script>
+    <script src="inventory.js"></script>
+    <script>
+      fetch('sidebar.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('sidebar-placeholder').innerHTML = html;
+          sidebarInit();
+        });
+
+      fetch('persian-clock.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('persian-clock-placeholder').innerHTML = html;
+          if (typeof initPersianClock === "function") initPersianClock();
+        });
+    </script>
+</body>
+</html>

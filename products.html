@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products - My Shop Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="products.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <button class="burger" id="burger"><i class="fas fa-bars"></i></button>
+    <!-- Sidebar will be loaded here -->
+    <div id="sidebar-placeholder"></div>
+    <div class="main-content" id="main-content">
+        <h1>Products</h1>
+        <div class="products-table-container">
+            <table class="products-table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>SKU</th>
+                        <th>Category</th>
+                        <th>Unit Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Widget A</td>
+                        <td>WA-001</td>
+                        <td>Gadgets</td>
+                        <td>$10.00</td>
+                        <td>Active</td>
+                    </tr>
+                    <tr>
+                        <td>Widget B</td>
+                        <td>WB-002</td>
+                        <td>Gizmos</td>
+                        <td>$12.50</td>
+                        <td>Active</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="sidebar.js"></script>
+    <script src="java.js"></script>
+    <script src="products.js"></script>
+    <script>
+      // Load sidebar.html and initialize sidebar logic after load
+      fetch('sidebar.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('sidebar-placeholder').innerHTML = html;
+          sidebarInit();
+        });
+    </script>
+</body>
+</html>
